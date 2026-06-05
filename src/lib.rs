@@ -7,3 +7,4 @@ pub mod memory;
 pub mod sensors;
 pub mod prediction;
 pub mod agent;
+pub mod vga_buffer;

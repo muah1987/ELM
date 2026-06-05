@@ -1,6 +1,5 @@
 #![no_std]
 #![no_main]
-#![feature(asm_const)]
 
 extern crate alloc;
 
@@ -11,15 +10,11 @@ use core::panic::PanicInfo;
 #[global_allocator]
 static ALLOCATOR: LockedHeap = LockedHeap::empty();
 
-// Import the screen driver (Assuming you place vga_buffer.rs in the examples folder)
-mod vga_buffer;
-
 // Import the ELM Library you just built!
 use elm_kernel::world::grid::GridWorld;
 use elm_kernel::memory::bank::MemoryBank;
-use elm_kernel::sensors::state_self::StateSelf;
-use elm_kernel::prediction::engine::WorldModel;
-use elm_kernel::memory::pocket::{ExperiencePayload, Pocket};
+use elm_kernel::agent::ELMAgent;
+use elm_kernel::println;
 
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
