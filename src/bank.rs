@@ -3,7 +3,7 @@
 extern crate alloc;
 use alloc::vec::Vec;
 use alloc::collections::BTreeMap;
-use crate::memory::{Pocket, ExperiencePayload};
+use crate::memory::pocket::{Pocket, ExperiencePayload};
 
 pub struct MemoryBank {
     /// BTreeMap is used instead of HashMap because it is available in no_std alloc
