@@ -1,5 +1,3 @@
-#![no_std]
-
 /// StateSelf represents physical hardware proprioception.
 /// Read directly from CPU Time Stamp Counters (TSC), MSRs, and MMU.
 #[derive(Debug, Clone, Copy, PartialEq)]

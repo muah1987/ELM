@@ -1,5 +1,3 @@
-#![no_std]
-
 extern crate alloc;
 use alloc::collections::BTreeMap;
 use alloc::vec::Vec;
@@ -29,6 +27,11 @@ impl MemoryBank {
             compress_size: 5,
             max_delta_for_rule: 0.2,
         }
+    }
+
+    /// Context-Sensitive Similarity Engine (Bare-Metal implementation)
+    pub fn calculate_similarity(&self, p1: &Pocket, p2: &Pocket) -> f32 {
+        self.similarity.calculate(p1, p2)
     }
 
     pub fn evaluate_and_store(&mut self, mut new_pocket: Pocket) {

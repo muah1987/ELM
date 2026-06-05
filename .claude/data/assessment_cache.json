@@ -1,0 +1,72 @@
+{
+  "timestamp": "2026-06-05T09:09:56.796412+00:00",
+  "active_cli": "claude",
+  "clis": {
+    "claude": {
+      "installed": true,
+      "version": "2.1.152",
+      "authenticated": false
+    },
+    "gemini": {
+      "installed": false,
+      "version": null,
+      "authenticated": false
+    },
+    "codex": {
+      "installed": true,
+      "version": "0.94.0",
+      "authenticated": false
+    },
+    "gh": {
+      "installed": true,
+      "version": "2.63.2",
+      "authenticated": true
+    }
+  },
+  "ollama": {
+    "installed": true,
+    "version": "0.24.0",
+    "host": "http://localhost:11434",
+    "models": []
+  },
+  "api_keys": {
+    "openai": false,
+    "anthropic": false,
+    "elevenlabs": false,
+    "ollama": true
+  },
+  "capabilities": {
+    "tts": false,
+    "github": true,
+    "subagent_optimization": false,
+    "cli_optimized_for": "claude"
+  },
+  "hooks": {
+    "total": 0,
+    "blocking_capable": [
+      "PreToolUse",
+      "PermissionRequest",
+      "UserPromptSubmit",
+      "Stop",
+      "SubagentStop"
+    ],
+    "async_capable": [
+      "PostToolUse",
+      "Notification",
+      "TeammateIdle",
+      "TaskCompleted"
+    ]
+  },
+  "models": {
+    "preferred_llm": "none",
+    "preferred_tts": "none",
+    "available_ollama_models": [],
+    "ollama_default_model": null,
+    "task_models": {
+      "code_review": "none",
+      "summarization": "none",
+      "naming": "none",
+      "assessment": "none"
+    }
+  }
+}

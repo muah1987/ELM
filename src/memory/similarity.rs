@@ -1,5 +1,3 @@
-#![no_std]
-
 use crate::memory::pocket::Pocket;
 
 /// The Context-Sensitive Similarity Engine

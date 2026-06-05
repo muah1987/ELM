@@ -1,6 +1,8 @@
-#![no_std]
+// The core cognitive loop. Executes one cycle of experience.
 
-use crate::memory::{ExperiencePayload, Pocket, StateSelf, StateFocal, bank::MemoryBank};
+use crate::memory::pocket::{ExperiencePayload, Pocket, StateFocal};
+use crate::memory::bank::MemoryBank;
+use crate::sensors::state_self::StateSelf;
 use crate::world::grid::GridWorld;
 
 pub struct ELMAgent {

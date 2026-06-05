@@ -1,5 +1,3 @@
-#![no_std]
-
 use crate::memory::bank::MemoryBank;
 use crate::memory::pocket::{ExperiencePayload, StateFocal};
 use alloc::vec::Vec; // Ensure you are importing Vec explicitly here
