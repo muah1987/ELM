@@ -1,4 +1,4 @@
-name: Rust
+name: ELM Bare-Metal CI
 
 on:
   push:
@@ -11,12 +11,30 @@ env:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build
-      run: cargo build --verbose
-    - name: Run tests
-      run: cargo test --verbose
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Install Rust toolchain
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        # Crucial: Add the bare-metal target and LLVM tools
+        targets: x86_64-unknown-none
+        components: llvm-tools-preview
+
+    - name: Install Bootimage
+      # Required to link the kernel into a bootable image
+      run: cargo install bootimage
+
+    - name: Build ELM Library
+      # Ensures the core architecture compiles without OS dependencies
+      run: cargo build --target x86_64-unknown-none --verbose
+
+    - name: Build Bootable MVP (Thermal Maze)
+      # Compiles the actual bootable kernel image
+      run: cargo bootimage --example thermal_maze
+      
+    # Note: cargo test is temporarily removed until a #![no_std] 
+    # custom test runner is implemented in the architecture.
