@@ -1,12 +1,13 @@
 #![no_std]
 #![no_main]
-#![feature(asm_const)]
+// DELETE: #![feature(asm_const)]
 
 extern crate alloc;
 
 use bootloader::{entry_point, BootInfo};
 use linked_list_allocator::LockedHeap;
 use core::panic::PanicInfo;
+use elm_kernel::prediction::engine::ELMAgent; // Assuming your agent is here
 
 #[global_allocator]
 static ALLOCATOR: LockedHeap = LockedHeap::empty();
