@@ -1,5 +1,3 @@
-#![no_std]
-
 extern crate alloc;
 use alloc::vec::Vec;
 use crate::sensors::state_self::StateSelf;
