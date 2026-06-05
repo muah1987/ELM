@@ -110,7 +110,7 @@ If you want to work on something that isn't an issue yet, open one first and des
 
 ```bash
 # Fork the repo on GitHub, then:
-git clone https://github.com/YOUR_USERNAME/elm
+git clone https://github.com/muah1987/ELM
 cd elm
 git checkout -b your-feature-name
 
