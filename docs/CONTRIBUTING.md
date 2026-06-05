@@ -82,7 +82,7 @@ rustup toolchain install nightly
 rustup target add aarch64-unknown-none  # for bare-metal Pi target
 
 # Clone the repo
-git clone https://github.com/YOUR_ORG/elm
+git clone https://github.com/muah1987/ELM.git
 cd elm
 
 # Build and run tests
@@ -92,7 +92,7 @@ cargo run --example thermal_maze
 
 ### 3. Pick something to work on
 
-Check the [Issues](https://github.com/YOUR_ORG/elm/issues) tab. Issues are labeled:
+Check the [Issues](https://github.com/muah1987/ELM.git/issues) tab. Issues are labeled:
 
 - `good-first-issue` — start here if you are new
 - `help-wanted` — we need this and nobody owns it
