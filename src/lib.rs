@@ -1,4 +1,6 @@
-#![no_std] // Ensures the entire ELM library remains bare-metal compatible
+#![no_std] // Only here, at the root
+
+extern crate alloc; // CRITICAL: Exposes the allocator to all sub-modules
 
 pub mod world;
 pub mod memory;
