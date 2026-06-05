@@ -5,7 +5,10 @@ edition = "2021"
 
 [dependencies]
 linked_list_allocator = "0.10.5"
-bootloader = "0.9.23" # Adds the bare-metal boot sequence
+bootloader = "0.9.23"
+volatile = "0.2.6"
+lazy_static = { version = "1.0", features = ["spin_no_std"] }
+spin = "0.5.2"
 
 [profile.release]
 opt-level = 3
