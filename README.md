@@ -155,8 +155,8 @@ See [docs/MVP.md](docs/MVP.md) for the full MVP specification.
 ## Getting Started
 
 ```bash
-git clone https://github.com/YOUR_ORG/elm
-cd elm
+git clone https://github.com/muah1987/ELM.git
+cd ELM
 ```
 
 Prerequisites: Rust nightly, cross-compilation target for aarch64 (Raspberry Pi 4)
