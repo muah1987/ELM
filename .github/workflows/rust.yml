@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Install Rust toolchain
-      uses: dtolnay/rust-toolchain@stable
+      uses: dtolnay/rust-toolchain@nightly
       with:
         # Crucial: Add the bare-metal target and LLVM tools
         targets: x86_64-unknown-none
@@ -34,7 +34,7 @@ jobs:
 
     - name: Build Bootable MVP (Thermal Maze)
       # Compiles the actual bootable kernel image
-      run: cargo bootimage --example thermal_maze
+      run: cargo bootimage
       
     # Note: cargo test is temporarily removed until a #![no_std] 
     # custom test runner is implemented in the architecture.
