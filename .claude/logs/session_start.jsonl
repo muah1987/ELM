@@ -1,1 +1,2 @@
 {"session_id": "818d780a-fad5-4e20-80da-a77dcfcbf0e7", "transcript_path": "/home/mohammed/.claude/projects/-mnt-d-projects-ELM/818d780a-fad5-4e20-80da-a77dcfcbf0e7.jsonl", "cwd": "/mnt/d/projects/ELM", "hook_event_name": "SessionStart", "source": "startup", "model": "gemma4:31b-cloud"}
+{"session_id": "818d780a-fad5-4e20-80da-a77dcfcbf0e7", "transcript_path": "/home/mohammed/.claude/projects/-mnt-d-projects-ELM/818d780a-fad5-4e20-80da-a77dcfcbf0e7.jsonl", "cwd": "/mnt/d/projects/ELM", "hook_event_name": "SessionStart", "source": "compact", "model": "gemma4:31b-cloud"}

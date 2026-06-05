@@ -1,8 +1,7 @@
 use crate::memory::bank::MemoryBank;
 use crate::memory::pocket::{ExperiencePayload, StateFocal};
-use alloc::vec::Vec; // Ensure you are importing Vec explicitly here
 
-/// The internal World Model. 
+/// The internal World Model.
 /// Queries the Memory Bank to project the future based on the past.
 pub struct WorldModel;
 
@@ -29,15 +28,15 @@ impl WorldModel {
                 };
 
                 let sim = memory.similarity.calculate(&dummy_current, pocket);
-                
-                // If we find a highly similar past rule for this exact action
-                if sim > 0.90 && pocket.payload.action == payload.action {
+
+                // If we find a more similar past rule for this exact action
+                if sim > best_sim && sim > 0.90 && pocket.payload.action == payload.action {
                     best_sim = sim;
                     predicted_state = pocket.payload.outcome;
                 }
             }
         }
-        
+
         predicted_state
     }
 }

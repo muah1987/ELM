@@ -13,7 +13,6 @@ static ALLOCATOR: LockedHeap = LockedHeap::empty();
 // Import the ELM Library you just built!
 use elm_kernel::world::grid::GridWorld;
 use elm_kernel::memory::bank::MemoryBank;
-use elm_kernel::agent::ELMAgent;
 use elm_kernel::println;
 
 #[panic_handler]
@@ -33,9 +32,9 @@ fn kernel_main(_boot_info: &'static BootInfo) -> ! {
     unsafe { ALLOCATOR.lock().init(HEAP_START as *mut u8, HEAP_SIZE); }
 
     // Initialize ELM Components from the library
-    let mut env = GridWorld::new();
-    let mut memory = MemoryBank::new();
-    
+    let _env = GridWorld::new();
+    let _memory = MemoryBank::new();
+
     println!("ELM Agent Initialized. Entering Exploration Loop.");
     
     // The bare-metal MVP loop logic goes here...

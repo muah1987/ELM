@@ -22,7 +22,7 @@ jobs:
       with:
         # Crucial: Add the bare-metal target and LLVM tools
         targets: x86_64-unknown-none
-        components: llvm-tools-preview
+        components: llvm-tools-preview, rust-src
 
     - name: Install Bootimage
       # Required to link the kernel into a bootable image

@@ -39,21 +39,21 @@ impl ELMAgent {
         }
     }
 
-    /// The World Model Query. 
+    /// The World Model Query.
     /// Searches for Tier 1 Rules that match the current state and intended action.
     fn predict_outcome(&mut self, payload: &ExperiencePayload) -> Option<StateFocal> {
-        let start_cycles = self.hardware_cycles;
-        
         let mut best_sim = 0.0;
         let mut predicted_state: Option<StateFocal> = None;
 
         // Iterate through memory looking for Semantic Rules (Tier 1)
         for (_, pocket) in self.memory.pockets.iter() {
             if pocket.compression_tier == 1 {
+                // In a full implementation, we would compare the payload to the pocket
+                // Here we simulate the similarity check
                 let sim = self.memory.calculate_similarity(&pocket, &pocket); // Simplified for MVP
-                
-                // If we find a highly similar past rule for this exact action
-                if sim > 0.90 && pocket.payload.action == payload.action {
+
+                // If we find a more similar past rule for this exact action
+                if sim > best_sim && sim > 0.90 && pocket.payload.action == payload.action {
                     best_sim = sim;
                     predicted_state = pocket.payload.outcome;
                 }
@@ -61,8 +61,8 @@ impl ELMAgent {
         }
 
         // Proprioception update: querying memory takes time (latency)
-        self.hardware_cycles += 500; 
-        
+        self.hardware_cycles += 500;
+
         predicted_state
     }
 
@@ -72,10 +72,10 @@ impl ELMAgent {
 
         // 1. Capture Pre-Action States
         let (focal_state, ambient_state) = self.env.get_states();
-        
+
         // Simulate hardware exertion: complex actions or moving heat increases temp
-        self.core_temp += 0.1; 
-        let mut self_state = self.read_hardware_state();
+        self.core_temp += 0.1;
+        let self_state = self.read_hardware_state();
 
         // 2. Assemble Pre-Action Payload
         let mut payload = ExperiencePayload {
@@ -83,7 +83,7 @@ impl ELMAgent {
             state_ambient: ambient_state,
             state_focal: focal_state,
             action,
-            outcome: None, 
+            outcome: None,
             delta: 1.0, // Defaults to max surprise
         };
 

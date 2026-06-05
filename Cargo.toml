@@ -18,7 +18,7 @@ path = "src/lib.rs"
 # Define the MVP as the primary bootable binary
 [[bin]]
 name = "thermal_maze"
-path = "examples/thermal_maze.rs"
+path = "src/bin/thermal_maze.rs"
 
 [profile.release]
 opt-level = 3
