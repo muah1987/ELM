@@ -2,16 +2,25 @@
 
 **AI Model:** claude-sonnet-4-6 | **Agent ID:** session_818d780a-fad5-4e
 **Compact trigger:** auto
-**Branch:** main | **Last commit:** f07c482 fix: promote thermal_maze to bin for cargo-bootimage compatibility
+**Branch:** main | **Last commit:** cc6212f fix: resolve CI toolchain error and clean up build warnings
 
 ### Changed
+- .github/workflows/rust.yml
 - Cargo.toml
 - examples/thermal_maze.rs
+- specs/critical-implementation-gaps.md
 - src/agent.rs
+- src/bin/thermal_maze.rs
+- src/hal/mod.rs
+- src/hal/rpi4.rs
 - src/lib.rs
 - src/main.rs
 - src/memory/bank.rs
+- src/memory/pocket.rs
 - src/memory/similarity.rs
+- src/perception/uee.rs
+- src/planning/engine.rs
+- src/planning/mod.rs
 - src/prediction/engine.rs
 - src/sensors/state_self.rs
 
@@ -30,3 +39,5 @@
 - git add . && git commit -m "fix: resolve CI build errors by correcting import paths and restoring similarity method" && 
 - git add . && git commit -m "fix: resolve example build failures by integrating vga_buffer into library" && git push orig
 - git add Cargo.toml && git commit -m "fix: promote thermal_maze to bin for cargo-bootimage compatibility" && git push ori
+- git add .github/workflows/rust.yml && git commit -m "$(cat <<'EOF' ci: switch to nightly toolchain and fix bootimage tar
+- git add . && git commit -m "$(cat <<'EOF' fix: resolve CI toolchain error and clean up build warnings  - Add rust-src to
