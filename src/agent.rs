@@ -1,8 +1,7 @@
 #![no_std]
 
-use crate::memory::{ExperiencePayload, Pocket, StateSelf, StateFocal};
-use crate::bank::MemoryBank;
-use crate::environment::GridWorld;
+use crate::memory::{ExperiencePayload, Pocket, StateSelf, StateFocal, bank::MemoryBank};
+use crate::world::grid::GridWorld;
 
 pub struct ELMAgent {
     pub env: GridWorld,

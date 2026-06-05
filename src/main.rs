@@ -7,19 +7,13 @@ extern crate alloc;
 use bootloader::{entry_point, BootInfo};
 use linked_list_allocator::LockedHeap;
 use core::panic::PanicInfo;
-use elm_kernel::prediction::engine::ELMAgent; // Assuming your agent is here
 
 #[global_allocator]
 static ALLOCATOR: LockedHeap = LockedHeap::empty();
 
 // Import our modules
 mod vga_buffer;
-mod memory;
-mod bank;
-mod environment;
-mod engine; 
-
-use engine::ELMAgent;
+use elm_kernel::agent::ELMAgent;
 
 /// The bare-metal panic handler. 
 #[panic_handler]

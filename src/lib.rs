@@ -6,3 +6,4 @@ pub mod world;
 pub mod memory;
 pub mod sensors;
 pub mod prediction;
+pub mod agent;
