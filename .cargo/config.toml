@@ -1,0 +1,7 @@
+[build]
+# Set the default target to our bare-metal architecture
+target = "x86_64-unknown-none"
+
+[target.x86_64-unknown-none]
+# Tell Cargo to use the bootimage tool to run QEMU
+runner = "bootimage runner"
