@@ -1,6 +1,6 @@
 #![no_std]
 
-use crate::memory::{StateAmbient, StateFocal};
+use crate::memory::pocket::{StateAmbient, StateFocal};
 
 /// The physical universe for the MVP. A deterministic 2D matrix.
 pub struct GridWorld {
