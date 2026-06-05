@@ -2,6 +2,7 @@
 
 use crate::memory::bank::MemoryBank;
 use crate::memory::pocket::{ExperiencePayload, StateFocal};
+use alloc::vec::Vec; // Ensure you are importing Vec explicitly here
 
 /// The internal World Model. 
 /// Queries the Memory Bank to project the future based on the past.
