@@ -2,11 +2,17 @@
 
 **AI Model:** claude-sonnet-4-6 | **Agent ID:** session_818d780a-fad5-4e
 **Compact trigger:** auto
-**Branch:** main | **Last commit:** dd44b98 docs: auto-save session memory/changelog before compact [818d780a-fad5-4e]
+**Branch:** main | **Last commit:** 1cfe6b1 docs: auto-save session memory/changelog before compact [818d780a-fad5-4e]
 
 ### Changed
 - .cargo/config.toml
 - .github/workflows/rust.yml
+- .claude/plans/piped-bubbling-wand.md
+- ELM/src/agent.rs
+- src/memory/bank.rs
+- src/memory/pocket.rs
+- src/planning/engine.rs
+- src/sensors/state_self.rs
 - Cargo.toml
 - examples/thermal_maze.rs
 - specs/critical-implementation-gaps.md
