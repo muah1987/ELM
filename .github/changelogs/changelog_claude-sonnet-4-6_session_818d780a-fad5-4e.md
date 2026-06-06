@@ -1,23 +1,27 @@
-## [2026-06-05] — init repo https://github.com/muah1987/ELM.git
+## [2026-06-06] — init repo https://github.com/muah1987/ELM.git
 
 **AI Model:** claude-sonnet-4-6 | **Agent ID:** session_818d780a-fad5-4e
 **Compact trigger:** auto
-**Branch:** main | **Last commit:** cc6212f fix: resolve CI toolchain error and clean up build warnings
+**Branch:** main | **Last commit:** f8da4fe docs: auto-save session memory/changelog before compact [818d780a-fad5-4e]
 
 ### Changed
+- .cargo/config.toml
 - .github/workflows/rust.yml
 - Cargo.toml
 - examples/thermal_maze.rs
 - specs/critical-implementation-gaps.md
+- specs/native-pu-indexing.md
 - src/agent.rs
 - src/bin/thermal_maze.rs
 - src/hal/mod.rs
+- src/hal/pu.rs
 - src/hal/rpi4.rs
 - src/lib.rs
 - src/main.rs
 - src/memory/bank.rs
 - src/memory/pocket.rs
 - src/memory/similarity.rs
+- src/perception/mod.rs
 - src/perception/uee.rs
 - src/planning/engine.rs
 - src/planning/mod.rs
