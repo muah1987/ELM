@@ -2,7 +2,7 @@
 
 **AI Model:** claude-sonnet-4-6 | **Agent ID:** session_818d780a-fad5-4e
 **Compact trigger:** auto
-**Branch:** main | **Last commit:** f8da4fe docs: auto-save session memory/changelog before compact [818d780a-fad5-4e]
+**Branch:** main | **Last commit:** dd44b98 docs: auto-save session memory/changelog before compact [818d780a-fad5-4e]
 
 ### Changed
 - .cargo/config.toml
@@ -13,6 +13,7 @@
 - specs/native-pu-indexing.md
 - src/agent.rs
 - src/bin/thermal_maze.rs
+- src/hal/discovery.rs
 - src/hal/mod.rs
 - src/hal/pu.rs
 - src/hal/rpi4.rs
