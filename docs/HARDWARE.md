@@ -93,7 +93,23 @@ Without an OS, hardware register reads are direct. A page fault is not a hidden 
 
 ---
 
-## Direct Hardware Access
+## Native PU Indexing
+
+ELM no longer uses static HAL traits. Instead, it employs a dynamic **PU Registry**.
+At boot, `probe_hardware()` identifies attached Processing Units (PUs) and indexes them in a global `BTreeMap`.
+
+```rust
+pub struct PuRegistry {
+    pockets: BTreeMap<PuId, Box<dyn Pu>>,
+}
+```
+
+This allows the agent to:
+1. **Discover** new hardware at runtime.
+2. **Directly address** registers via `PuId`.
+3. **Genericize** storage (NVMe, RAM, Flash) under the same `Pu` trait.
+
+---
 
 ### CPU Performance Monitoring Unit (PMU)
 
@@ -236,38 +252,10 @@ fn read_distance_mm(&mut self) -> f32 {
 
 ```rust
 pub struct StateSelf {
-    // ARM PMU (direct register reads)
-    pub cpu_cycles:        u64,
-    pub instructions:      u64,
-    pub cache_misses:      u64,
-    
-    // Thermal (BCM2711 register)
-    pub cpu_temp_celsius:  f32,
-    
-    // ARM Generic Timer
-    pub timestamp_cycles:  u64,
-    
-    // Derived
-    pub ipc:               f32,   // instructions per cycle
-    pub cache_miss_rate:   f32,   // cache_misses / instructions
-    pub inference_latency: f32,   // cycles for last prediction
-    
-    // I2C Physical Sensors
-    pub ambient_temp:      f32,   // BME280 °C
-    pub pressure_hpa:      f32,   // BME280 hPa
-    pub humidity_pct:      f32,   // BME280 %
-    pub accel_x:           f32,   // MPU-6050 m/s²
-    pub accel_y:           f32,
-    pub accel_z:           f32,
-    pub gyro_x:            f32,   // MPU-6050 °/s
-    pub gyro_y:            f32,
-    pub gyro_z:            f32,
-    pub distance_mm:       f32,   // VL53L0X mm
-    
-    // MMU / Memory
-    pub pages_allocated:   u32,
-    pub page_faults:       u32,
-    pub memory_used_bytes: u32,
+    pub cpu_cycles: u64,          // Absolute time in raw hardware ticks
+    pub core_temp: f32,           // Read from thermal sensor
+    pub page_fault_count: u32,    // MMU distress metric
+    pub inference_latency: u64,   // Cycle cost of the last prediction
 }
 ```
 

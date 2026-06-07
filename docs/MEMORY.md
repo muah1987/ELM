@@ -28,13 +28,14 @@ struct Pocket {
 }
 
 struct ExperiencePayload {
-    state_focal:   Vec<f32>,    // 256 dims — high-res attention data
-    state_ambient: Vec<f16>,    // 256 dims — background context
-    state_self:    StateSelf,   // hardware body snapshot
-    action:        Action,      // what was done
-    outcome:       Vec<f32>,    // 256 dims — what resulted
-    delta:         f32,         // surprise magnitude [0.0 - 1.0]
-    modality_map:  ModalityMap, // which dims came from which sense
+    normalized_self:   [f32; 4],     // [temp, cycles, faults, latency]
+    normalized_ambient: [f32; 1],    // [temp]
+    normalized_focal:   [f32; 4],    // [x, y, touch, reserve]
+    action:            u8,           // action index
+    normalized_outcome: Option<[f32; 4]>,
+    delta:             f32,          // surprise magnitude [0.0 - 1.0]
+    valence:          Valence,      // hedonic value and source
+    pain_at_time:      PainSensor,   // hardware distress snapshot
 }
 ```
 
@@ -53,6 +54,24 @@ State is not a flat snapshot. It is split by attention level:
 - Where hidden variables hide
 
 This split means: during a post-surprise investigation, the ELM can comb through State_Ambient looking for what it wasn't paying attention to that turned out to matter.
+
+---
+
+## Valence and Hedonics
+
+ELM uses a hedonic model to assign "emotional" value to experiences, driving intrinsic motivation.
+
+### The Valence Signals
+| Signal | Value | Description | Decay |
+|---|---|---|---|
+| **Pain** | -0.1 to -1.0 | Immediate hardware distress (thermal, page fault) | Very Slow |
+| **Punishment** | -0.1 to -0.5 | Negative outcome / goal misalignment | Moderate |
+| **Relief** | +0.5 to +1.0 | Transition from Pain $\rightarrow$ Non-Pain | Slow |
+| **Reward** | +0.5 to +1.0 | Successful goal achievement | Moderate |
+| **Neutral** | 0.0 | Expected outcome | Fast |
+
+### Hedonic Gradient
+The `HedonicGradient` tracks the moving average of expected valence for State-Action pairs. This biases the `PlanningEngine` to prefer paths that have historically felt "good," even if the factual confidence is slightly lower.
 
 ---
 
@@ -127,13 +146,13 @@ fn quantize(delta: f32, cluster_size: u32, significance: f32) -> u8 {
 Significance determines how long a Pocket survives before being eligible for compression or deletion.
 
 ```
-significance = f(delta) + base_value - (time_elapsed * decay_rate)
+significance = clamp((delta ^ 2 * 0.6) + (|valence| * 0.4), 0, 1)
 
 Where:
-  f(delta)    = delta ^ 2          (surprise increases significance quadratically)
-  base_value  = 0.1                (everything starts with minimal significance)
-  decay_rate  = configurable       (slower for high-significance pockets)
+  delta ^ 2     = surprise increases significance quadratically
+  |valence|     = the absolute hedonic intensity (pain or reward)
 ```
+Pockets with high absolute valence (especially Pain and Relief) are prioritized for long-term retention.
 
 High-Delta pockets self-protect. A pocket with significance = 0.95 will decay very slowly. A pocket with significance = 0.05 will decay quickly and be eligible for deletion.
 

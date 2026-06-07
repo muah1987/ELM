@@ -22,13 +22,13 @@ impl SimilarityEngine {
         }
 
         // Squared Euclidean distance for Focal State (no float-math sqrt needed)
-        let dx = (p1.payload.state_focal.position_x - p2.payload.state_focal.position_x) as f32;
-        let dy = (p1.payload.state_focal.position_y - p2.payload.state_focal.position_y) as f32;
+        let dx = p1.payload.normalized_focal[0] - p2.payload.normalized_focal[0];
+        let dy = p1.payload.normalized_focal[1] - p2.payload.normalized_focal[1];
         let focal_dist_sq = (dx * dx) + (dy * dy);
         let sim_focal = 1.0 / (1.0 + focal_dist_sq);
 
         // Hardware Proprioception difference
-        let temp_diff = p1.payload.state_self.core_temp - p2.payload.state_self.core_temp;
+        let temp_diff = p1.payload.normalized_self[0] - p2.payload.normalized_self[0];
         let temp_dist_sq = temp_diff * temp_diff;
         let sim_self = 1.0 / (1.0 + temp_dist_sq);
 

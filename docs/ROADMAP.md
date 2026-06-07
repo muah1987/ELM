@@ -12,21 +12,21 @@ Every phase must be validated before the next begins. We do not build on unprove
 
 ---
 
-## Phase 0 — Proof of Concept *(current)*
+## Phase 0 — Proof of Concept *(completed)*
 
 **Goal:** Prove the core memory loop works in a controlled simulation.
 
 **The Thermal Maze MVP:**
-- [ ] Grid World environment (10×10, walls, heat source)
-- [ ] Pocket data structure (SAO tuple + Delta + State_Self)
-- [ ] Sensor normalization
-- [ ] Cosine similarity engine with context weights
-- [ ] Clustering and compression trigger
-- [ ] Tier 1 Rule generation (centroid + variance + condition map)
-- [ ] Prediction Engine (World Model query + Delta calculation)
-- [ ] Single-step reactive planning
-- [ ] Basic State_Self (CPU temp, memory, inference latency)
-- [ ] Learning curve plot (Delta over time)
+- [x] Grid World environment (10×10, walls, heat source)
+- [x] Pocket data structure (SAO tuple + Delta + State_Self)
+- [x] Sensor normalization
+- [x] Cosine similarity engine with context weights
+- [x] Clustering and compression trigger
+- [x] Tier 1 Rule generation (centroid + variance + condition map)
+- [x] Prediction Engine (World Model query + Delta calculation)
+- [x] Single-step reactive planning
+- [x] Basic State_Self (CPU temp, memory, inference latency)
+- [x] Learning curve plot (Delta over time)
 
 **Exit criteria:** PASS_4 fires. Delta measurably drops on familiar paths. Learning curve bends downward.
 

@@ -13,12 +13,12 @@ Biological systems evolved memory long before complex reasoning. ELM follows the
 The architecture has five layers, built in dependency order:
 
 ```
-Layer 5: Reasoning        — goals, planning, execution monitoring
+Layer 5: Reasoning        — goals, planning, execution monitoring, hedonic bias
 Layer 4: World Model      — prediction engine, contradiction resolution
 Layer 3: Compression      — Tier 0 → Tier 1 → Tier 2 abstraction
-Layer 2: Memory Bank      — Pocket storage, clustering, similarity
+Layer 2: Memory Bank      — Pocket storage, clustering, similarity, hedonic gradient
 Layer 1: Perception       — UEE, normalization, signal binding
-Layer 0: Hardware Self    — bare-metal proprioception
+Layer 0: Hardware Self    — bare-metal proprioception, native PU indexing
 ```
 
 Each layer depends entirely on the one below it. No shortcuts.
@@ -483,8 +483,8 @@ Planning is path-finding through **experienced territory** — not search throug
 4. IF direct bridge found → single-step plan
 5. IF no bridge → find intermediate states
    Build chain: Current → Mid1 → Mid2 → ... → Goal
-6. For each step: check Condition_Map, Confidence, Contradiction_Flag
-7. Output ranked Plan candidates with composite confidence
+6. For each step: calculate score = (Confidence * 0.6) + (ExpectedValence * 0.4)
+7. Output ranked Plan candidates by score
 ```
 
 ### Plan Structure

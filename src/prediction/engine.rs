@@ -1,5 +1,5 @@
 use crate::memory::bank::MemoryBank;
-use crate::memory::pocket::{ExperiencePayload, StateFocal};
+use crate::memory::pocket::ExperiencePayload;
 
 /// The internal World Model.
 /// Queries the Memory Bank to project the future based on the past.
@@ -7,9 +7,9 @@ pub struct WorldModel;
 
 impl WorldModel {
     /// Retrieves Tier 1 Semantic Rules to predict the outcome of an intended action.
-    pub fn predict_outcome(memory: &MemoryBank, payload: &ExperiencePayload) -> Option<StateFocal> {
+    pub fn predict_outcome(memory: &MemoryBank, payload: &ExperiencePayload) -> Option<[f32; 4]> {
         let mut best_sim = 0.0;
-        let mut predicted_state: Option<StateFocal> = None;
+        let mut predicted_state: Option<[f32; 4]> = None;
 
         // Iterate through memory looking strictly for Semantic Rules (Tier 1)
         for (_, pocket) in memory.pockets.iter() {
@@ -32,7 +32,7 @@ impl WorldModel {
                 // If we find a more similar past rule for this exact action
                 if sim > best_sim && sim > 0.90 && pocket.payload.action == payload.action {
                     best_sim = sim;
-                    predicted_state = pocket.payload.outcome;
+                    predicted_state = pocket.payload.normalized_outcome;
                 }
             }
         }
