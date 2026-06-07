@@ -2,14 +2,22 @@
 
 **AI Model:** claude-sonnet-4-6 | **Agent ID:** session_c1b9f2ef-379a-4d
 **Compact trigger:** auto
-**Branch:** main | **Last commit:** f74caa4 feat: implement native PU indexing and valence-driven cognitive architecture
+**Branch:** main | **Last commit:** 7d80959 docs: auto-save session memory/changelog before compact [c1b9f2ef-379a-4d]
 
 ### Changed
 - .claude/plans/implement-cognitive-architecture.md
 - docs/MEMORY.md
 - docs/SENSOR_INDEX.md
+- src/agent.rs
 - src/memory/bank.rs
+- src/memory/mod.rs
 - src/memory/pocket.rs
+- src/memory/significance.rs
+- src/sensors/lying.rs
+- src/sensors/mod.rs
+- src/sensors/pain.rs
+- src/sensors/priority_stack.rs
+- src/sensors/state_self.rs
 
 ### Fixed
 - (see session transcript)
