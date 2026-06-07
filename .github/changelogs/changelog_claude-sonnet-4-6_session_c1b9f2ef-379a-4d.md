@@ -2,10 +2,17 @@
 
 **AI Model:** claude-sonnet-4-6 | **Agent ID:** session_c1b9f2ef-379a-4d
 **Compact trigger:** auto
-**Branch:** main | **Last commit:** 61a2a9b docs: auto-save session memory/changelog before compact [c1b9f2ef-379a-4d]
+**Branch:** main | **Last commit:** cb328ba docs: auto-save session memory/changelog before compact [c1b9f2ef-379a-4d]
 
 ### Changed
 - .claude/plans/implement-cognitive-architecture.md
+- ELM/src/agent.rs
+- src/memory/bank.rs
+- src/memory/similarity.rs
+- src/planning/engine.rs
+- src/prediction/engine.rs
+- src/sensors/mod.rs
+- src/sensors/state_self.rs
 - docs/MEMORY.md
 - docs/SENSOR_INDEX.md
 - src/agent.rs
